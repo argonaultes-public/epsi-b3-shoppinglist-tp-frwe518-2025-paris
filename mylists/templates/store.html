@@ -1,0 +1,11 @@
+<h1>Store {{ store.store_name }}</h1>
+
+<div>Items in store</div>
+
+<div>
+    <ul>
+        {% for item in items_in_store %}
+            <li>{{ item.item_name }} ({{ item.item_serial }})</li>
+        {% endfor %}
+    </ul>
+</div>

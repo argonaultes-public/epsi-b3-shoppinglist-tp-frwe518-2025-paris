@@ -20,6 +20,11 @@ def stores(request):
     stores = Store.objects.all()
     return render(request=request, template_name='stores.html', context={ 'stores': stores})
 
+def store_details(request, store_id = 0):
+    store = Store.objects.get(pk=store_id)
+    items_in_store = store.item_set.all()
+    return render(request=request, template_name='store.html', context={'store': store, 'items_in_store': items_in_store})
+
 def items(request):
     items = Item.objects.all()
     return render(request=request, template_name='items.html', context={'items': items})
