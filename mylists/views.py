@@ -23,3 +23,7 @@ def stores(request):
 def items(request):
     items = Item.objects.all()
     return render(request=request, template_name='items.html', context={'items': items})
+
+def item_details(request, item_id = 0):
+    item = Item.objects.get(pk=item_id)
+    return render(request=request, template_name='item.html', context={'item': item})

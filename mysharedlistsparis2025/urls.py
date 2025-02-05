@@ -29,4 +29,5 @@ urlpatterns = [
     path("index_tpl_ctx", views.index_view_tpl_title),
     path("stores", views.stores),
     path("items", views.items),
+    path("items/<int:item_id>/", views.item_details),
 ]
