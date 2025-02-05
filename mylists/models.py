@@ -16,3 +16,12 @@ class Store(models.Model):
 
     def __str__(self):
         return self.store_name
+
+
+class ShopList(models.Model):
+    shoplist_name = models.CharField(max_length=20)
+    color = models.CharField(max_length=20, default='Green')
+    items = models.ManyToManyField(Item)
+
+    def __str__(self):
+        return self.shoplist_name
