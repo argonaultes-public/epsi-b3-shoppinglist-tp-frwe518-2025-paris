@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Store
+from .models import Store, Item
 
 # Create your views here.
 
@@ -19,3 +19,7 @@ def index_view_tpl_title(request):
 def stores(request):
     stores = Store.objects.all()
     return render(request=request, template_name='stores.html', context={ 'stores': stores})
+
+def items(request):
+    items = Item.objects.all()
+    return render(request=request, template_name='items.html', context={'items': items})
