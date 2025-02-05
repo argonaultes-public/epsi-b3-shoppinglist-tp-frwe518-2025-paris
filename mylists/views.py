@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Store, Item
+from .models import Store, Item, ShopList
 
 # Create your views here.
 
@@ -32,3 +32,7 @@ def items(request):
 def item_details(request, item_id = 0):
     item = Item.objects.get(pk=item_id)
     return render(request=request, template_name='item.html', context={'item': item})
+
+def shop_lists(request):
+    shop_lists = ShopList.objects.prefetch_related('items')
+    return render(request=request, template_name='shoplists.html', context={'shop_lists': shop_lists})

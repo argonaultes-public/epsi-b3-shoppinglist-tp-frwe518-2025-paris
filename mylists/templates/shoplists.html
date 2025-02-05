@@ -1,0 +1,5 @@
+<ul>
+    {% for shop_list in shop_lists %}
+        <li>{{ shop_list }} ( {{ shop_list.items.count }} )</li>
+    {% endfor %}
+</ul>
