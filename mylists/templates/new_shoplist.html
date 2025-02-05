@@ -1,10 +1,23 @@
 <form action="{% url 'shoplist_new' %}" method="POST">
-    {% csrf_token %}
-    <div>
+  {% csrf_token %}
+  <div>
     <label for="shoplist_name">Name: </label>
   </div>
   <div>
     <input type="text" id="shoplist_name" name="shoplist_name" />
+  </div>
+  <div>
+    {% for item in items %}
+    <div>
+      <input
+        type="checkbox"
+        name="item-{{ item.id }}"
+        id="item{{ forloop.counter}}"
+        value="{{ item.id }}"
+      />
+      <label for="item{{ forloop.counter }}">{{ item.item_name }}</label>
+    </div>
+    {% endfor %}
   </div>
   <div>
     <input type="submit" value="New ShopList" />

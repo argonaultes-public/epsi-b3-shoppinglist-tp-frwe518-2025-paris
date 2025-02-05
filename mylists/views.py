@@ -38,9 +38,17 @@ def shop_lists(request):
     return render(request=request, template_name='shoplists.html', context={'shop_lists': shop_lists})
 
 def display_form_shop_list(request):
-    return render(request=request, template_name='new_shoplist.html', context={})
+    items = Item.objects.all()
+    return render(request=request, template_name='new_shoplist.html', context={'items': items})
 
 def new_shop_list(request):
     shoplist_name = request.POST['shoplist_name']
-    ShopList.objects.create(shoplist_name=shoplist_name)
+    print(request.POST)
+    # get all ids from db and compare to post data
+    items = request.POST['item-id']
+    print(items)
+    shoplist = ShopList(shoplist_name=shoplist_name)
+    shoplist.save()
+    shoplist.items.add(items)
+    shoplist.save()
     return redirect("list_of_shoplists")
