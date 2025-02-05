@@ -1,0 +1,12 @@
+<form action="{% url 'shoplist_new' %}" method="POST">
+    {% csrf_token %}
+    <div>
+    <label for="shoplist_name">Name: </label>
+  </div>
+  <div>
+    <input type="text" id="shoplist_name" name="shoplist_name" />
+  </div>
+  <div>
+    <input type="submit" value="New ShopList" />
+  </div>
+</form>

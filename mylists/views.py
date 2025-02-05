@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Store, Item, ShopList
 
@@ -36,3 +36,11 @@ def item_details(request, item_id = 0):
 def shop_lists(request):
     shop_lists = ShopList.objects.prefetch_related('items')
     return render(request=request, template_name='shoplists.html', context={'shop_lists': shop_lists})
+
+def display_form_shop_list(request):
+    return render(request=request, template_name='new_shoplist.html', context={})
+
+def new_shop_list(request):
+    shoplist_name = request.POST['shoplist_name']
+    ShopList.objects.create(shoplist_name=shoplist_name)
+    return redirect("list_of_shoplists")
