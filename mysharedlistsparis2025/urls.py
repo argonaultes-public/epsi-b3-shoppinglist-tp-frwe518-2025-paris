@@ -25,5 +25,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index_view),
     path("index_view_other", views.index_view_other),
-    path("index_tpl", views.index_view_tpl)
+    path("index_tpl", views.index_view_tpl),
+    path("index_tpl_ctx", views.index_view_tpl_title),
 ]
