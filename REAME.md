@@ -7,6 +7,8 @@
 - corriger la soumission du formulaire via la fonction `new_shop_list` : 10 minutes
 
 - Ajouter l'[authentification](https://docs.djangoproject.com/en/5.2/topics/auth/default/) en s'appuyant sur les classes natives User de Django
+  - page de connexion selon un formulaire username / password : 10 minutes
   - protéger avec authentification les pages de création de listes, d'items et de stores
-  - laisser en libre accès les pages d'index
+  - laisser en libre accès les pages d'index et de connexion
+
 - Etudier la conversion en [formsets](https://docs.djangoproject.com/en/5.2/topics/forms/formsets/)

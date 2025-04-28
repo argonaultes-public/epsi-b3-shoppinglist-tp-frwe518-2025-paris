@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
 from mylists import views
 
@@ -36,5 +37,6 @@ urlpatterns = [
     path("shoplist/", views.display_form_shop_list),
     path("shoplist/<int:shop_list_id>/", views.shop_list_details),
     path("shoplist/new/", views.new_shop_list, name="shoplist_new"),
-    path("shoplist_class/", views.ShopListView.as_view(), name="shoplist_class")
+    path("shoplist_class/", login_required(views.ShopListView.as_view(), login_url='login_class'), name="shoplist_class"),
+    path("login/", views.MyLoginView.as_view(), name='login_class'),
 ]
