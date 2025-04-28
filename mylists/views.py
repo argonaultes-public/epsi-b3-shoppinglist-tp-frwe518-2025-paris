@@ -5,6 +5,7 @@ from .models import Store, Item, ShopList
 import re
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from .forms import ItemForm
 # Create your views here.
 
 def index_view(request):
@@ -103,3 +104,15 @@ class MyLoginView(View):
             return redirect('shoplist_class')
         else:
             return redirect('login_class')
+
+class ItemCreationView(View):
+
+    def get(self, request):
+        return render(request=request, template_name='new_item.html', context={'form': ItemForm()})
+
+    def post(self, request):
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            return redirect('items')
+        else:
+            return redirect('items_class')

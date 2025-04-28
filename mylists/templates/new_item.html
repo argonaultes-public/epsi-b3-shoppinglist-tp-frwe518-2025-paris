@@ -1,0 +1,5 @@
+<form action="{% url 'items_class' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="New item">
+</form>

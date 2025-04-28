@@ -5,3 +5,4 @@
     <li><a href="/items/{{ item.id }}/">{{ item.item_name }} ({{ item.item_serial }})</li>
 {% endfor %}
 </ul>
+<a href="{% url 'items_class' %}">Add new item</a>
