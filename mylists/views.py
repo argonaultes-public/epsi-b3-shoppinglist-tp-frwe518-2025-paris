@@ -33,6 +33,10 @@ def item_details(request, item_id = 0):
     item = Item.objects.get(pk=item_id)
     return render(request=request, template_name='item.html', context={'item': item})
 
+def shop_list_details(request, shop_list_id = 0):
+    shop_list = ShopList.objects.get(pk=shop_list_id)
+    return render(request=request, template_name='shoplist.html', context={'shoplist': shop_list})
+
 def shop_lists(request):
     shop_lists = ShopList.objects.prefetch_related('items')
     return render(request=request, template_name='shoplists.html', context={'shop_lists': shop_lists})

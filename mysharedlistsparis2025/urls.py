@@ -33,5 +33,6 @@ urlpatterns = [
     path("items/<int:item_id>/", views.item_details),
     path("shoplists", views.shop_lists, name="list_of_shoplists"),
     path("shoplist", views.display_form_shop_list),
+    path("shoplist/<int:shop_list_id>", views.shop_list_details),
     path("shoplist/new", views.new_shop_list, name="shoplist_new"),
 ]
