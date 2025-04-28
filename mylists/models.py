@@ -21,7 +21,7 @@ class Store(models.Model):
 class ShopList(models.Model):
     shoplist_name = models.CharField(max_length=20)
     color = models.CharField(max_length=20, default='Green')
-    items = models.ManyToManyField(Item)
+    items = models.ManyToManyField(Item, blank=True)
 
     def __str__(self):
         return self.shoplist_name

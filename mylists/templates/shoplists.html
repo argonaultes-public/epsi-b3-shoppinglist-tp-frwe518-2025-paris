@@ -1,5 +1,10 @@
-<ul>
-    {% for shop_list in shop_lists %}
-        <li><a href="/shoplist/{{ shop_list.id }}/">{{ shop_list }} ( {{ shop_list.items.count }} )</a></li>
-    {% endfor %}
-</ul>
+<div>
+    <ul>
+        {% for shop_list in shop_lists %}
+            <li><a href="/shoplist/{{ shop_list.id }}/">{{ shop_list }} ( {{ shop_list.items.count }} )</a></li>
+        {% endfor %}
+    </ul>    
+</div>
+<div>
+    <a href="{% url 'shoplist_class' %}">+</a>
+</div>

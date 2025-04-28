@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-from mylists.views import index_view
 from mylists import views
 
 urlpatterns = [
