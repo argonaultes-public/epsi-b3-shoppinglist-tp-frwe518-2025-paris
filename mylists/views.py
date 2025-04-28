@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views import View
 from .models import Store, Item, ShopList
 
 # Create your views here.
@@ -56,3 +57,21 @@ def new_shop_list(request):
     shoplist.items.add(items)
     shoplist.save()
     return redirect("list_of_shoplists")
+
+class ShopListView(View):
+
+    def get(self, request):
+        items = Item.objects.all()
+        return render(request=request, template_name='new_shoplist.html', context={'items': items})
+
+    def post(self, request):
+        shoplist_name = request.POST['shoplist_name']
+        print(request.POST)
+        # get all ids from db and compare to post data
+        items = request.POST['item-id']
+        print(items)
+        shoplist = ShopList(shoplist_name=shoplist_name)
+        shoplist.save()
+        shoplist.items.add(items)
+        shoplist.save()
+        return redirect("list_of_shoplists")

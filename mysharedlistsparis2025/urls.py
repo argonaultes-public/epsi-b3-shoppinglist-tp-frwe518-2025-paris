@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 
 from mylists.views import index_view
 from mylists import views
@@ -26,6 +27,7 @@ urlpatterns = [
     path("", views.index_view),
     path("index_view_other", views.index_view_other),
     path("index_tpl", views.index_view_tpl),
+    path("index_tpl_2", TemplateView.as_view(template_name='tpl.html')),
     path("index_tpl_ctx", views.index_view_tpl_title),
     path("stores", views.stores),
     path("stores/<int:store_id>", views.store_details),
@@ -35,4 +37,5 @@ urlpatterns = [
     path("shoplist", views.display_form_shop_list),
     path("shoplist/<int:shop_list_id>", views.shop_list_details),
     path("shoplist/new", views.new_shop_list, name="shoplist_new"),
+    path("shoplist_class/", views.ShopListView.as_view(), name="shoplist_class")
 ]
