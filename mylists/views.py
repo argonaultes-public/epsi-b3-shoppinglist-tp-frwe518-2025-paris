@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from .models import Store, Item, ShopList
-
+import re
 # Create your views here.
 
 def index_view(request):
@@ -66,12 +66,14 @@ class ShopListView(View):
 
     def post(self, request):
         shoplist_name = request.POST['shoplist_name']
-        print(request.POST)
         # get all ids from db and compare to post data
-        items = request.POST['item-id']
-        print(items)
+        items = []
+        for item in request.POST:
+            if re.search(r'item-\d+', item):
+                items.append(int(request.POST[item]))
         shoplist = ShopList(shoplist_name=shoplist_name)
         shoplist.save()
-        shoplist.items.add(items)
+        for itemid in items:
+            shoplist.items.add(itemid)
         shoplist.save()
         return redirect("list_of_shoplists")
