@@ -1,6 +1,7 @@
 # TODO
 
 
+
 - Afficher le détail d'une liste accesible depuis l'url `shoplist/id` : 10 minutes - 16h37
 - Ajouter une url qui permet d'aller vers le détail d'une liste d'achat depuis la liste des listes `shoplists` : 5 minutes
 - enlever l'obligation d'associer un élément à une nouvelle liste : 10 minutes
